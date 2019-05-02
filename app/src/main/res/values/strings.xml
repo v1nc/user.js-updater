@@ -1,0 +1,31 @@
+<resources>
+    <string name="app_name">user.js updater</string>
+    <string name="main_update">last update:</string>
+    <string name="main_choose">choose user.js source</string>
+    <string name="main_combo1">quindecim</string>
+    <string name="main_combo2">ghacks</string>
+    <string name="main_combo3">pyllyukko</string>
+    <string name="main_combo4">custom</string>
+    <string name="main_input">custom user.js url</string>
+    <string name="main_button">update</string>
+    <string name="dialog_head">need help?</string>
+    <string name="dialog_text">click to join telegram group!</string>
+    <string name="dialog_button">join</string>
+    <string name="telegram_url">https://t.me/fennec_fdroid</string>
+    <string name="default_package_name">org.mozilla.fennec_fdroid</string>
+    <string name="dialog_done_title">done</string>
+    <string name="dialog_done_text">successfully updated user.js!</string>
+    <string name="dialog_done_button">open browser</string>
+    <string name="dialog_error_title">error</string>
+    <string name="dialog_error_su">root access failed!</string>
+    <string name="main_package">set browser package name</string>
+    <string name="intro1_title">welcome to user.js updater</string>
+    <string name="intro1_text">this app downloads a selected user.js file and moves it to the right place. this will limit tracking possibilities
+    and the general attack surface. it will also restart your browser. you have to change the package name if you are not using fennec fdroid.</string>
+    <string name="intro2_title">permissions</string>
+    <string name="intro2_text">this app needs file and root permissions to download the user.js file and move it. please allow file permissions now.</string>
+    <string name="dialog_error_file">failed to download user.js file. please check file permissions!</string>
+    <string name="user_url1">https://raw.githubusercontent.com/quindecim/fennec_user.js/master/user.js</string>
+    <string name="user_url2">https://raw.githubusercontent.com/ghacksuserjs/ghacks-user.js/master/user.js</string>
+    <string name="user_url3">https://raw.githubusercontent.com/pyllyukko/user.js/master/user.js</string>
+</resources>

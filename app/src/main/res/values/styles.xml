@@ -1,0 +1,28 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimary</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="radioButtonStyle">@style/MyRadioButtonStyle</item>
+        <item name="android:textColor">@color/colorText</item>
+        <item name="editTextStyle">@style/MyEditTextStyle</item>
+        <item name="buttonStyle">@style/MyButtonStyle</item>
+        <item name="android:windowBackground">@color/colorPrimary</item>
+    </style>
+
+    <style name="MyRadioButtonStyle" parent="Widget.AppCompat.CompoundButton.RadioButton">
+        <item name="android:textColor">@color/colorText</item>
+        <item name="android:buttonTint">@color/colorText</item>
+    </style>
+    <style name="MyEditTextStyle" parent="Widget.AppCompat.EditText">
+        <item name="android:textColor">@color/colorText</item>
+        <item name="android:backgroundTint">@color/colorText</item>
+    </style>
+    <style name="MyButtonStyle" parent="Widget.AppCompat.Button">
+        <item name="android:textColor">@color/colorPrimary</item>
+        <item name="android:backgroundTint">@color/colorAccent</item>
+    </style>
+</resources>
