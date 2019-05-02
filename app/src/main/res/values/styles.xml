@@ -13,6 +13,10 @@
         <item name="android:windowBackground">@color/colorPrimary</item>
     </style>
 
+    <style name="MyDialogAlertStyle" parent="AlertDialog.AppCompat">
+        <item name="android:textColor">@color/colorPrimary</item>
+
+    </style>
     <style name="MyRadioButtonStyle" parent="Widget.AppCompat.CompoundButton.RadioButton">
         <item name="android:textColor">@color/colorText</item>
         <item name="android:buttonTint">@color/colorText</item>
@@ -20,6 +24,7 @@
     <style name="MyEditTextStyle" parent="Widget.AppCompat.EditText">
         <item name="android:textColor">@color/colorText</item>
         <item name="android:backgroundTint">@color/colorText</item>
+        <item name="android:textColorHint">@color/colorText</item>
     </style>
     <style name="MyButtonStyle" parent="Widget.AppCompat.Button">
         <item name="android:textColor">@color/colorPrimary</item>

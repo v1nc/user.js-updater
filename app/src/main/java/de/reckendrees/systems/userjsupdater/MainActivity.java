@@ -17,12 +17,16 @@ import android.os.Environment;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.SpannableStringBuilder;
+import android.text.Spanned;
+import android.text.style.ForegroundColorSpan;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -30,16 +34,20 @@ import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
     TextView textLastUpdate;
     DownloadManager manager;
-    RadioButton radioButton1, radioButton2, radioButton3, radioButton4;
+    RadioButton radioButton1, radioButton2, radioButton3, radioButton4, radioButton5;
     EditText editText;
     Button button, button2;
-    ImageView imageView;
+    ImageView imageView, imageView2;
     SharedPreferences prefs;
+    Map<String, String> packageNameMap = new HashMap<String, String>();
+    final CharSequence browserList[] = {"fennec fdroid", "fennec privacy", "icecat", "firefox", "orfox" };
     SharedPreferences.Editor editor;
     BroadcastReceiver onComplete=new BroadcastReceiver() {
         public void onReceive(Context ctxt, Intent intent) {
@@ -65,8 +73,11 @@ public class MainActivity extends AppCompatActivity {
                     if(!error){
                         error = moveUserJSFile(filename,packageName,profile,user);
                     }
-                    AlertDialog alertDialog = new AlertDialog.Builder(MainActivity.this).create();
+                    AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+
+                    AlertDialog alertDialog = builder.create();
                     if(!error){
+                        //initDialog(builder,getResources().getString(R.string.dialog_done_title));
                         alertDialog.setTitle(getResources().getString(R.string.dialog_done_title));
                         alertDialog.setMessage(getResources().getString(R.string.dialog_done_text));
                         alertDialog.setIcon(R.drawable.ic_done_black_24dp);
@@ -78,6 +89,7 @@ public class MainActivity extends AppCompatActivity {
                         });
                     }else{
                         alertDialog.setTitle(getResources().getString(R.string.dialog_error_title));
+                        //initDialog(builder,getResources().getString(R.string.dialog_error_title));
                         alertDialog.setMessage(getResources().getString(R.string.dialog_error_su));
                         alertDialog.setIcon(R.drawable.ic_error_black_24dp);
                     }
@@ -88,6 +100,13 @@ public class MainActivity extends AppCompatActivity {
 
         }
     };
+    private void initPackgeNameMap(){
+        packageNameMap.put("fennec fdroid", "org.mozilla.fennec_fdroid");
+        packageNameMap.put("fennec privacy", "org.mozilla.fennec_privacy");
+        packageNameMap.put("icecat", "org.gnu.icecat");
+        packageNameMap.put("firefox", "org.mozilla.firefox");
+        packageNameMap.put("orfox", "info.guardianproject.orfox");
+    }
     private void showIntro(){
         Thread t = new Thread(new Runnable() {
             @Override
@@ -255,6 +274,35 @@ public class MainActivity extends AppCompatActivity {
         }
         return false;
     }
+    private void initDialog(AlertDialog.Builder alertDialogBuilder, String title){
+        ForegroundColorSpan foregroundColorSpan = new ForegroundColorSpan(getResources().getColor(R.color.colorAccent));
+        SpannableStringBuilder ssBuilder = new SpannableStringBuilder(title);
+        ssBuilder.setSpan(
+                foregroundColorSpan,
+                0,
+                title.length(),
+                Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
+        );
+        alertDialogBuilder.setTitle(ssBuilder);
+    }
+    private void downloadUserJS(String url){
+        try{
+            DownloadManager.Request request = new DownloadManager.Request(Uri.parse(url));
+            request.setDescription("User.js Update");
+            request.setTitle("User.js Update");
+            request.setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS, "downloaded_user.js");
+            manager = (DownloadManager) getSystemService(Context.DOWNLOAD_SERVICE);
+            registerReceiver(onComplete, new IntentFilter(manager.ACTION_DOWNLOAD_COMPLETE));
+            manager.enqueue(request);
+        }catch(Exception e){
+            AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+            initDialog(builder,getResources().getString(R.string.dialog_error_title));
+            AlertDialog alertDialog = builder.create();
+            alertDialog.setMessage(getResources().getString(R.string.dialog_error_file));
+            alertDialog.setIcon(R.drawable.ic_error_black_24dp);
+            alertDialog.show();
+        }
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -263,46 +311,87 @@ public class MainActivity extends AppCompatActivity {
         radioButton2 = findViewById(R.id.radioButton2);
         radioButton3 = findViewById(R.id.radioButton3);
         radioButton4 = findViewById(R.id.radioButton4);
+        radioButton5 = findViewById(R.id.radioButton5);
+        final RadioGroup radioGroup = findViewById(R.id.radioGroup);
         editText = findViewById(R.id.editText);
         button = findViewById(R.id.button);
         button2 = findViewById(R.id.button2);
         imageView = findViewById(R.id.imageView);
+        imageView2 = findViewById(R.id.imageView2);
         prefs = PreferenceManager.getDefaultSharedPreferences(this);
+        initPackgeNameMap();
         editor = prefs.edit();
         showIntro();
+        String custom_url = prefs.getString("custom_url","error");
+        if(!custom_url.equals("error")){
+            editText.setText(custom_url);
+        }
+        switch(prefs.getInt("user.js_combo",0)){
+            case 1:
+                radioButton2.toggle();
+                break;
+            case 2:
+                radioButton3.toggle();
+                break;
+            case 3:
+                radioButton5.toggle();
+                break;
+            case 4:
+                radioButton4.toggle();
+                break;
+        }
+        Intent intent = getIntent();
+        String action = intent.getAction();
+        Uri data = intent.getData();
+        try {
+            if(data.toString().length() > 0){
+                String url = getResources().getString(R.string.user_url1);
+                switch (prefs.getInt("user.js_combo",0)){
+                    case 1:
+                        url = getResources().getString(R.string.user_url3);
+                        break;
+                    case 2:
+                        url = getResources().getString(R.string.user_url3);
+                        break;
+                    case 3:
+                        url = getResources().getString(R.string.user_url4);
+                        break;
+                }
+                downloadUserJS(url);
+            }
+        }catch(NullPointerException e){
+
+        }
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String url = getResources().getString(R.string.user_url1);
+                editor.putInt("user.js_combo",0);
                 if(radioButton2.isChecked()){
                     url = getResources().getString(R.string.user_url2);
+                    editor.putInt("user.js_combo",1);
                 }else if(radioButton3.isChecked()){
                     url = getResources().getString(R.string.user_url3);
-                }else if(radioButton4.isChecked()){
+                    editor.putInt("user.js_combo",2);
+                } else if(radioButton5.isChecked()){
+                url = getResources().getString(R.string.user_url4);
+                    editor.putInt("user.js_combo",3);
+                }
+                else if(radioButton4.isChecked()){
                     url = editText.getText().toString();
+                    editor.putString("custom_url",url);
+                    editor.putInt("user.js_combo",4);
+
                 }
-                try{
-                    DownloadManager.Request request = new DownloadManager.Request(Uri.parse(url));
-                    request.setDescription("User.js Update");
-                    request.setTitle("User.js Update");
-                    request.setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS, "downloaded_user.js");
-                    manager = (DownloadManager) getSystemService(Context.DOWNLOAD_SERVICE);
-                    registerReceiver(onComplete, new IntentFilter(manager.ACTION_DOWNLOAD_COMPLETE));
-                    manager.enqueue(request);
-                }catch(Exception e){
-                    AlertDialog alertDialog = new AlertDialog.Builder(MainActivity.this).create();
-                    alertDialog.setTitle(getResources().getString(R.string.dialog_error_title));
-                    alertDialog.setMessage(getResources().getString(R.string.dialog_error_file));
-                    alertDialog.setIcon(R.drawable.ic_done_black_24dp);
-                    alertDialog.show();
-                }
+                editor.commit();
+                downloadUserJS(url);
 
             }
         });
         button2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+                /*AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
                 builder.setTitle("Title");
                 final EditText input = new EditText(MainActivity.this);
 
@@ -322,15 +411,32 @@ public class MainActivity extends AppCompatActivity {
                     }
                 });
 
-                builder.show();
+                builder.show();*/
+                AlertDialog.Builder ad = new AlertDialog.Builder(MainActivity.this);
+                initDialog(ad, getResources().getString(R.string.dialog_browser_combo_title));
+                ad.setIcon(R.drawable.ic_settings_black_24dp);
+                ad.setSingleChoiceItems(browserList, prefs.getInt("package_combo",0),  new DialogInterface.OnClickListener() {
+
+                    @Override
+                    public void onClick(DialogInterface arg0, int arg1) {
+
+                        editor.putString("package_name",packageNameMap.get(browserList[arg1].toString()));
+                        editor.putInt("package_combo", arg1);
+                        editor.commit();
+                        arg0.cancel();
+
+                    }
+                });
+                ad.show();
+
             }
         });
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                AlertDialog alertDialog = new AlertDialog.Builder(
-                        MainActivity.this).create();
-                alertDialog.setTitle(getResources().getString(R.string.dialog_head));
+                AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+                initDialog(builder,getResources().getString(R.string.dialog_head));
+                AlertDialog alertDialog = builder.create();
                 alertDialog.setMessage(getResources().getString(R.string.dialog_text));
                 alertDialog.setIcon(R.drawable.ic_help_black_24dp);
                 alertDialog.setButton(getResources().getString(R.string.dialog_button), new DialogInterface.OnClickListener() {
@@ -341,6 +447,25 @@ public class MainActivity extends AppCompatActivity {
                     }
                 });
                 alertDialog.show();
+            }
+        });
+        imageView2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+                initDialog(builder,getResources().getString(R.string.dialog_browser_set));
+                final EditText input = new EditText(MainActivity.this);
+
+                builder.setView(input);
+                builder.setPositiveButton("save", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                        editor.putString("package_name",input.getText().toString());
+                        editor.commit();
+                    }
+                });
+                builder.show();
             }
         });
     }
