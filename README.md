@@ -4,6 +4,7 @@ update your user.js on android without trouble
 ## features:
 * use predefined and custom user.js configurations
 * apply for any geckoview-based browser( e.g. fennec, firefox, icecat)
+* set custom browser package name
 * deeplink for instant update: https://update.userjs
 
 ## screenshots:
