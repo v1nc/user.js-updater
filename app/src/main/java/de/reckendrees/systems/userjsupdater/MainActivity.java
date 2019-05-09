@@ -41,7 +41,7 @@ import java.util.Map;
 public class MainActivity extends AppCompatActivity {
     TextView textLastUpdate;
     DownloadManager manager;
-    RadioButton radioButton1, radioButton2, radioButton3, radioButton4, radioButton5;
+    RadioButton radioButton1, radioButton2, radioButton3, radioButton4, radioButton5, radioButton420;
     EditText editText;
     Button button, button2;
     ImageView imageView, imageView2;
@@ -312,6 +312,7 @@ public class MainActivity extends AppCompatActivity {
         radioButton3 = findViewById(R.id.radioButton3);
         radioButton4 = findViewById(R.id.radioButton4);
         radioButton5 = findViewById(R.id.radioButton5);
+        radioButton420 = findViewById(R.id.radioButton420);
         final RadioGroup radioGroup = findViewById(R.id.radioGroup);
         editText = findViewById(R.id.editText);
         button = findViewById(R.id.button);
@@ -339,22 +340,31 @@ public class MainActivity extends AppCompatActivity {
             case 4:
                 radioButton4.toggle();
                 break;
+            case 420:
+                radioButton420.toggle();
+                break;
         }
         Intent intent = getIntent();
         String action = intent.getAction();
         Uri data = intent.getData();
         try {
             if(data.toString().length() > 0){
-                String url = getResources().getString(R.string.user_url1);
+                String url = getResources().getString(R.string.user_url420);
                 switch (prefs.getInt("user.js_combo",0)){
                     case 1:
-                        url = getResources().getString(R.string.user_url3);
+                        url = getResources().getString(R.string.user_url2);
                         break;
                     case 2:
                         url = getResources().getString(R.string.user_url3);
                         break;
                     case 3:
                         url = getResources().getString(R.string.user_url4);
+                        break;
+                    case 0:
+                        url = getResources().getString(R.string.user_url1);
+                        break;
+                    case 4:
+                        url = prefs.getString("custom_url",url);
                         break;
                 }
                 downloadUserJS(url);
@@ -365,9 +375,13 @@ public class MainActivity extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String url = getResources().getString(R.string.user_url1);
-                editor.putInt("user.js_combo",0);
-                if(radioButton2.isChecked()){
+                String url = getResources().getString(R.string.user_url420);
+                editor.putInt("user.js_combo",420);
+                if(radioButton1.isChecked()){
+                    url = getResources().getString(R.string.user_url1);
+                    editor.putInt("user.js_combo",0);
+                }
+                else if(radioButton2.isChecked()){
                     url = getResources().getString(R.string.user_url2);
                     editor.putInt("user.js_combo",1);
                 }else if(radioButton3.isChecked()){
@@ -436,16 +450,27 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
                 initDialog(builder,getResources().getString(R.string.dialog_head));
-                AlertDialog alertDialog = builder.create();
-                alertDialog.setMessage(getResources().getString(R.string.dialog_text));
-                alertDialog.setIcon(R.drawable.ic_help_black_24dp);
-                alertDialog.setButton(getResources().getString(R.string.dialog_button), new DialogInterface.OnClickListener() {
+                builder.setPositiveButton(getResources().getString(R.string.dialog_button),new DialogInterface.OnClickListener() {
+                    @Override
                     public void onClick(DialogInterface dialog, int which) {
+
                         Intent i = new Intent(Intent.ACTION_VIEW);
                         i.setData(Uri.parse(getResources().getString(R.string.telegram_url)));
                         startActivity(i);
                     }
                 });
+                builder.setNegativeButton(getResources().getString(R.string.dialog_button2),new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                        Intent i = new Intent(Intent.ACTION_VIEW);
+                        i.setData(Uri.parse(getResources().getString(R.string.comparison_url)));
+                        startActivity(i);
+                    }
+                });
+                AlertDialog alertDialog = builder.create();
+                alertDialog.setMessage(getResources().getString(R.string.dialog_text));
+                alertDialog.setIcon(R.drawable.ic_info_black_24dp);
                 alertDialog.show();
             }
         });
@@ -455,7 +480,7 @@ public class MainActivity extends AppCompatActivity {
                 AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
                 initDialog(builder,getResources().getString(R.string.dialog_browser_set));
                 final EditText input = new EditText(MainActivity.this);
-
+                input.setText(prefs.getString("package_name",""));
                 builder.setView(input);
                 builder.setPositiveButton("save", new DialogInterface.OnClickListener() {
                     @Override
@@ -465,7 +490,9 @@ public class MainActivity extends AppCompatActivity {
                         editor.commit();
                     }
                 });
-                builder.show();
+                AlertDialog alertDialog = builder.create();
+                alertDialog.setIcon(R.drawable.ic_settings_black_24dp);
+                alertDialog.show();
             }
         });
     }

@@ -7,13 +7,15 @@
     <string name="main_combo3">pyllyukko [desktop]</string>
     <string name="main_combo5">orangemanbad [pyllyukko fork]</string>
     <string name="main_combo4">custom</string>
+    <string name="main_combo420">v1nc [merge of the best for android]</string>
     <string name="dialog_browser_combo_title">select browser</string>
     <string name="dialog_browser_set">set browser package name</string>
     <string name="main_input">type custom user.js url</string>
     <string name="main_button">update</string>
-    <string name="dialog_head">need help?</string>
-    <string name="dialog_text">click to join telegram group!</string>
-    <string name="dialog_button">join</string>
+    <string name="dialog_head">info</string>
+    <string name="dialog_text">read source code or join telegram group!</string>
+    <string name="dialog_button">join telegram</string>
+    <string name="dialog_button2">source code</string>
     <string name="telegram_url">https://t.me/fennec_fdroid</string>
     <string name="default_package_name">org.mozilla.fennec_fdroid</string>
     <string name="dialog_done_title">done</string>
@@ -32,5 +34,7 @@
     <string name="user_url2">https://raw.githubusercontent.com/ghacksuserjs/ghacks-user.js/master/user.js</string>
     <string name="user_url3">https://raw.githubusercontent.com/pyllyukko/user.js/master/user.js</string>
     <string name="user_url4">https://git.nixnet.xyz/OrangeManBad/user.js/raw/branch/master/user.js</string>
-    <string name="filter_1">quindecim filter</string>
+    <string name="user_url420">https://raw.githubusercontent.com/v1nc/user.js/master/user.js</string>
+    <string name="comparison_url">https://github.com/v1nc/user.js-updater/</string>
+    <string name="filter_1">update user.js filter</string>
 </resources>
