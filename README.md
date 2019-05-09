@@ -15,4 +15,6 @@ update your user.js on android without trouble
 ## intro:
 powered by [AppIntro](https://github.com/AppIntro/AppIntro)
 
+## [compare user.js configurations](https://v1nc.github.io/)
+
 
