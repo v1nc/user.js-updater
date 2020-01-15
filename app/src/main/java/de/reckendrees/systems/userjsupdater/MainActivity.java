@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
     ImageView imageView, imageView2;
     SharedPreferences prefs;
     Map<String, String> packageNameMap = new HashMap<String, String>();
-    final CharSequence browserList[] = {"fennec fdroid", "fennec privacy", "icecat", "firefox", "orfox" };
+    final CharSequence browserList[] = {"Fennec F-Droid", "Firefox Preview", "IceCat", "Firefox", "Orfox" };
     SharedPreferences.Editor editor;
     BroadcastReceiver onComplete=new BroadcastReceiver() {
         public void onReceive(Context ctxt, Intent intent) {
@@ -101,11 +101,11 @@ public class MainActivity extends AppCompatActivity {
         }
     };
     private void initPackgeNameMap(){
-        packageNameMap.put("fennec fdroid", "org.mozilla.fennec_fdroid");
-        packageNameMap.put("fennec privacy", "org.mozilla.fennec_privacy");
-        packageNameMap.put("icecat", "org.gnu.icecat");
-        packageNameMap.put("firefox", "org.mozilla.firefox");
-        packageNameMap.put("orfox", "info.guardianproject.orfox");
+        packageNameMap.put("Fennec F-Droid", "org.mozilla.fennec_fdroid");
+        packageNameMap.put("Firefox Preview", "org.mozilla.fenix");
+        packageNameMap.put("IceCat", "org.gnu.icecat");
+        packageNameMap.put("Firefox", "org.mozilla.firefox");
+        packageNameMap.put("Orfox", "info.guardianproject.orfox");
     }
     private void showIntro(){
         Thread t = new Thread(new Runnable() {
