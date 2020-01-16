@@ -1,28 +1,46 @@
 <resources>
-
-    <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
-        <!-- Customize your theme here. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimary</item>
         <item name="colorAccent">@color/colorAccent</item>
         <item name="radioButtonStyle">@style/MyRadioButtonStyle</item>
         <item name="android:textColor">@color/colorText</item>
-        <item name="editTextStyle">@style/MyEditTextStyle</item>
+        <item name="android:actionBarStyle">@style/MyActionBarStyle</item>
         <item name="buttonStyle">@style/MyButtonStyle</item>
         <item name="android:windowBackground">@color/colorPrimary</item>
+        <item name="preferenceTheme">
+            @style/PreferenceThemeOverlay.v14.Material
+        </item>
+        <item name="alertDialogTheme">@style/AppAlertDialog</item>
+    </style>
+    <style name="PopupMenuStyle" parent="Theme.AppCompat.Light">
+        <item name="android:background">@color/colorPrimary</item>
+        <item name="android:textColor">@color/colorText</item>
+    </style>
+    <style name="MyActionBarStyle" parent="Widget.AppCompat.ActionBar">
+        <item name="android:titleTextStyle">@style/TitleTextStyle</item>
+        <item name="android:windowActionBarOverlay">false</item>
+    </style>
+    <style name="TitleTextStyle" parent="@android:style/TextAppearance.Holo.Widget.ActionBar.Title">
+        <item name="android:textColor">@color/colorText</item>
+    </style>
+    <style name="AppAlertDialog"
+        parent="Theme.AppCompat.DayNight.Dialog.Alert">
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:textColor">@color/colorText</item>
+        <item name="android:textColorPrimary">@color/colorText</item>
+        <item name="android:colorAccent">@color/colorText</item>
+        <item name="android:editTextColor">@color/colorText</item>
+        <item name="android:windowBackground">@color/colorPrimary</item>
+        <item name="android:textColorAlertDialogListItem">@color/colorText</item>
     </style>
 
-    <style name="MyDialogAlertStyle" parent="AlertDialog.AppCompat">
-        <item name="android:textColor">@color/colorPrimary</item>
-
-    </style>
     <style name="MyRadioButtonStyle" parent="Widget.AppCompat.CompoundButton.RadioButton">
         <item name="android:textColor">@color/colorText</item>
         <item name="android:buttonTint">@color/colorText</item>
     </style>
     <style name="MyEditTextStyle" parent="Widget.AppCompat.EditText">
-        <item name="android:textColor">@color/colorText</item>
+        <item name="android:textColor">@color/colorPrimary</item>
         <item name="android:backgroundTint">@color/colorText</item>
         <item name="android:textColorHint">@color/colorText</item>
     </style>

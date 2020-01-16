@@ -2,10 +2,10 @@
     <string name="app_name">User.js Updater</string>
     <string name="main_update">Last update:</string>
     <string name="main_choose">Choose User.js source</string>
-    <string name="main_combo1">quindecim [optimized for android]</string>
-    <string name="main_combo2">ghacks [desktop]</string>
-    <string name="main_combo3">pyllyukko [desktop]</string>
-    <string name="main_combo5">orangemanbad [pyllyukko fork]</string>
+    <string name="main_combo1">quindecim</string>
+    <string name="main_combo2">ghacks</string>
+    <string name="main_combo3">pyllyukko</string>
+    <string name="main_combo5">OrangeManBad</string>
     <string name="main_combo4">Custom</string>
     <string name="main_combo420">v1nc [merge of the best for android]</string>
     <string name="dialog_browser_combo_title">Select browser</string>
@@ -16,7 +16,7 @@
     <string name="dialog_text">Read source code or join Telegram group!</string>
     <string name="dialog_button">Join Telegram</string>
     <string name="dialog_button2">Source code</string>
-    <string name="telegram_url">https://t.me/fennec_fdroid</string>
+    <string name="telegram_url">https://t.me/v1_channels</string>
     <string name="default_package_name">org.mozilla.fennec_fdroid</string>
     <string name="dialog_done_title">Done</string>
     <string name="dialog_done_text">Successfully updated User.js!</string>
@@ -30,11 +30,28 @@
     <string name="intro2_title">Permissions</string>
     <string name="intro2_text">This app needs storage and root permissions to download the User.js file and move it to the right place. Please allow file permissions now.</string>
     <string name="dialog_error_file">Failed to download User.js file. Please check file permissions!</string>
-    <string name="user_url1">https://raw.githubusercontent.com/quindecim/fennec_user.js/master/user.js</string>
+    <string name="dialog_error_timeout">Download timed out. Please check connection, change timeout or disable Download Manager!</string>
+    <string name="dialog_error_download">Download failed. Please check connection and User.js url!</string>
+    <string name="dialog_error_downloader">Filed to download User.js file. Please disable Download Manger or check firewall config!</string>
+    <string name="user_url1">https://git.nixnet.xyz/quindecim/mobile_user.js/raw/branch/master/user.js</string>
     <string name="user_url2">https://raw.githubusercontent.com/ghacksuserjs/ghacks-user.js/master/user.js</string>
     <string name="user_url3">https://raw.githubusercontent.com/pyllyukko/user.js/master/user.js</string>
     <string name="user_url4">https://git.nixnet.xyz/OrangeManBad/user.js/raw/branch/master/user.js</string>
     <string name="user_url420">https://raw.githubusercontent.com/v1nc/user.js/master/user.js</string>
     <string name="comparison_url">https://github.com/v1nc/user.js-updater/</string>
     <string name="filter_1">Update User.js filter</string>
+    <string name="title_activity_settings">SettingsActivity</string>
+
+    <!-- Preference Titles -->
+    <string name="browser_header">Browser</string>
+    <string name="other_header">Behaviour</string>
+
+    <!-- Browser Preferences -->
+    <string name="browser_string_title">Set package name</string>
+    <string name="browser_title">Select browser</string>
+    <string name="restart_title">Restart browser after applying</string>
+    <!-- Other Preferences -->
+    <string name="clear_title">Purge current prefs after applying</string>
+    <string name="downloader_title">Use Download Manager</string>
+    <string name="download_timeout">Download timeout (in seconds)</string>
 </resources>

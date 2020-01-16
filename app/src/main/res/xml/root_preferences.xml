@@ -1,0 +1,59 @@
+<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <PreferenceCategory app:title="@string/browser_header">
+
+        <EditTextPreference
+            app:key="package_name"
+            app:defaultValue="org.mozilla.fennec_fdroid"
+            app:title="@string/browser_string_title"
+           />
+
+        <SwitchPreferenceCompat
+            app:key="restart_browser"
+            app:defaultValue="true"
+            app:title="@string/restart_title" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory app:title="@string/other_header">
+
+        <SwitchPreferenceCompat
+            app:key="clear"
+            app:defaultValue="false"
+            app:title="@string/clear_title" />
+
+        <SwitchPreferenceCompat
+            app:key="downloader"
+            app:defaultValue="true"
+            app:title="@string/downloader_title" />
+
+        <EditTextPreference
+            app:key="download_timeout"
+            app:defaultValue="10"
+            app:title="@string/download_timeout"/>
+    </PreferenceCategory>
+    <PreferenceCategory app:title="About">
+        <Preference
+            app:key="telegram"
+            app:title="Telegram"
+            app:summary="All my Telegram channels!"
+            >
+            <intent
+                android:action="android.intent.action.VIEW"
+                android:data="@string/telegram_url"
+                />
+        </Preference>
+        <Preference
+            app:key="source"
+            app:title="Source Code"
+            app:summary="View on Github!"
+            >
+            <intent
+                android:action="android.intent.action.VIEW"
+                android:data="@string/comparison_url"
+                />
+        </Preference>
+    </PreferenceCategory>
+
+</PreferenceScreen>

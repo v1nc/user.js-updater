@@ -1,0 +1,19 @@
+<resources>
+    <!-- Reply Preference -->
+    <string-array name="browser_entries">
+        <item>Fennec F-Droid</item>
+        <item>Firefox Preview</item>
+        <item>Firefox</item>
+        <item>IceCat</item>
+        <item>Orfox</item>
+    </string-array>
+
+    <string-array name="browser_values">
+        <item>org.mozilla.fennec_fdroid</item>
+        <item>org.mozilla.fenix</item>
+        <item>"org.mozilla.firefox"</item>
+        <item>"org.gnu.icecat"</item>
+        <item>"info.guardianproject.orfox"</item>
+    </string-array>
+</resources>
+
