@@ -22,38 +22,34 @@
             android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
             app:popupTheme="@style/PopupMenuStyle" />
 
-        <Space
+        <FrameLayout
+            android:id="@+id/clippedProgressBar"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.5" />
+            android:layout_height="4dp"
+            tools:ignore="UselessParent">
 
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="16dp"
+                android:layout_gravity="center_vertical">
+
+                <ProgressBar
+                    android:id="@+id/progressBar"
+                    style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:indeterminate="true"
+                    android:indeterminateTint="@color/colorAccent"
+                    android:visibility="invisible" />
+            </FrameLayout>
+        </FrameLayout>
         <RadioGroup
             android:id="@+id/radioGroup"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="10">
 
-            <FrameLayout
-                android:id="@+id/clippedProgressBar"
-                android:layout_width="match_parent"
-                android:layout_height="4dp"
-                tools:ignore="UselessParent">
 
-                <FrameLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="16dp"
-                    android:layout_gravity="center_vertical">
-
-                    <ProgressBar
-                        android:id="@+id/progressBar"
-                        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:indeterminate="true"
-                        android:indeterminateTint="@color/colorAccent"
-                        android:visibility="invisible" />
-                </FrameLayout>
-            </FrameLayout>
 
             <RadioButton
                 android:id="@+id/radioButton"
