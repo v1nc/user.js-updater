@@ -1,5 +1,10 @@
 # changelog
 
+
+### v1.3.1
+- fix progressbar
+
+
 ### v1.3
 - changed colors
 - cleaned up UI
