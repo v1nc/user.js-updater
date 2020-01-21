@@ -51,6 +51,16 @@
             >
             <intent
                 android:action="android.intent.action.VIEW"
+                android:data="@string/source_url"
+                />
+        </Preference>
+        <Preference
+            app:key="comparison"
+            app:title="Compare configs"
+            app:summary="View live comparison of User.js configs"
+            >
+            <intent
+                android:action="android.intent.action.VIEW"
                 android:data="@string/comparison_url"
                 />
         </Preference>

@@ -38,7 +38,8 @@
     <string name="user_url3">https://raw.githubusercontent.com/pyllyukko/user.js/master/user.js</string>
     <string name="user_url4">https://git.nixnet.xyz/OrangeManBad/user.js/raw/branch/master/user.js</string>
     <string name="user_url420">https://raw.githubusercontent.com/v1nc/user.js/master/user.js</string>
-    <string name="comparison_url">https://github.com/v1nc/user.js-updater/</string>
+    <string name="source_url">https://github.com/v1nc/user.js-updater/</string>
+    <string name="comparison_url">https://v1nc.github.io/comparison/</string>
     <string name="filter_1">Update User.js filter</string>
     <string name="title_activity_settings">SettingsActivity</string>
 
