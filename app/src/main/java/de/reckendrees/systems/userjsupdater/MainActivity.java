@@ -61,7 +61,7 @@ public class MainActivity extends AppCompatActivity implements DownloadInterface
     Button button;
     SharedPreferences prefs;
     Map<String, String> packageNameMap = new HashMap<String, String>();
-    final CharSequence browserList[] = {"Fennec F-Droid", "Firefox Preview", "IceCat", "Firefox", "Orfox" };
+    final CharSequence browserList[] = {"Fennec F-Droid", "Firefox Preview", "Firefox Preview Nightly","IceCat", "Firefox", "Orfox" };
     SharedPreferences.Editor editor;
     BroadcastReceiver onComplete;
 
@@ -410,6 +410,7 @@ public class MainActivity extends AppCompatActivity implements DownloadInterface
     private void initPackgeNameMap(){
         packageNameMap.put("Fennec F-Droid", "org.mozilla.fennec_fdroid");
         packageNameMap.put("Firefox Preview", "org.mozilla.fenix");
+        packageNameMap.put("Firefox Preview Nightly","org.mozilla.fenix.nightly");
         packageNameMap.put("IceCat", "org.gnu.icecat");
         packageNameMap.put("Firefox", "org.mozilla.firefox");
         packageNameMap.put("Orfox", "info.guardianproject.orfox");
