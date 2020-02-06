@@ -1,8 +1,13 @@
 # changelog
 
 
+### v1.3.3
+- added Firefox Preview Nightly
+- fixed installation errors on Android 4.4 and below
+
+
 ### v1.3.1
-- fix progressbar
+- fixed progressbar
 
 
 ### v1.3
