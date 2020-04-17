@@ -1,0 +1,14 @@
+Many people use user.js configuration files to harden their GeckoView based browser(<b>Firefox</b>).
+Updating the config manually is always a hassle.
+
+<b>User.js Updater</b> saves you the trouble!
+
+<b>Features</b> :
+ - use predefined and custom user.js configurations
+ - apply for any geckoview-based browser( e.g. Fennec, Firefox, IceCat)
+ - set custom browser package name
+ - optional: purge current configuration
+ - firewall friendly: download with and without download manager
+ - deeplink for instant update: <a href="https://update.userjs">https://update.userjs</a>
+
+ <b>This app needs root permissions. It is not possible to apply a config from outside of the browser without root.</b>

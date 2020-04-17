@@ -1,0 +1,1 @@
+Update your user.js config without trouble.

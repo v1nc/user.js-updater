@@ -1,0 +1,2 @@
+* add Firefox Preview Nightly
+* fix installation errors on Android 4.4 and below
