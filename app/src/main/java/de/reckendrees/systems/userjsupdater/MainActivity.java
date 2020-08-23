@@ -61,7 +61,7 @@ public class MainActivity extends AppCompatActivity implements DownloadInterface
     Button button;
     SharedPreferences prefs;
     Map<String, String> packageNameMap = new HashMap<String, String>();
-    final CharSequence browserList[] = {"Fennec F-Droid", "Firefox Preview", "Firefox Preview Nightly","IceCat", "Firefox", "Orfox" };
+    final CharSequence browserList[] = {"Fennec F-Droid", "Firefox Preview", "Firefox Preview Nightly","IceCat", "Firefox", "Orfox", "Firefox Klar", "Firefox Focus"};
     SharedPreferences.Editor editor;
     BroadcastReceiver onComplete;
 
@@ -414,6 +414,8 @@ public class MainActivity extends AppCompatActivity implements DownloadInterface
         packageNameMap.put("IceCat", "org.gnu.icecat");
         packageNameMap.put("Firefox", "org.mozilla.firefox");
         packageNameMap.put("Orfox", "info.guardianproject.orfox");
+        packageNameMap.put("Firefox Klar", "org.mozilla.klar");
+        packageNameMap.put("Firefox Focus", "org.mozilla.focus");
     }
 
     private void killAppBypackage(String packageTokill){
