@@ -6,6 +6,8 @@
         <item>Firefox</item>
         <item>IceCat</item>
         <item>Orfox</item>
+        <item>Firefox Klar</item>
+        <item>Firefox Focus</item>
     </string-array>
 
     <string-array name="browser_values">
@@ -14,6 +16,7 @@
         <item>"org.mozilla.firefox"</item>
         <item>"org.gnu.icecat"</item>
         <item>"info.guardianproject.orfox"</item>
+        <item>"org.mozilla.klar"</item>
+        <item>"org.mozilla.focus"</item>
     </string-array>
 </resources>
-
