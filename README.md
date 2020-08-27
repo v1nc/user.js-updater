@@ -1,6 +1,9 @@
 # user.js-updater
-update your user.js on android without trouble
+
+Update your user.js on Android without trouble !
+
 ## [download](https://github.com/v1nc/user.js-updater/releases)
+
 ## features:
 * use predefined and custom user.js configurations
 * apply for any geckoview-based browser( e.g. fennec, firefox, icecat)
@@ -18,5 +21,3 @@ update your user.js on android without trouble
 powered by [appintro](https://github.com/AppIntro/AppIntro)
 
 ## [compare user.js configurations](https://v1nc.github.io/)
-
-
